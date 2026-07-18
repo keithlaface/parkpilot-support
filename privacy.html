@@ -44,7 +44,7 @@
   <ul>
     <li>Party-member details and selected photos remain on your device for as long as that member remains in the saved trip.</li>
     <li>Confirmed reservation details remain on your device as part of your saved trip. Pasted source text and reservation source images are not retained after processing.</li>
-    <li>Current wait responses are cached in memory for up to one minute to avoid duplicate requests. Shipping version 1.0 does not save a persistent history of Queue-Times wait responses.</li>
+    <li>Current wait responses are kept only in process memory and reused for no more than one minute to avoid duplicate requests. Expired entries are removed on their next access, all cached responses disappear when the app process ends, and shipping version 1.0 never writes Queue-Times wait responses to persistent storage.</li>
     <li>You can change or remove a member's photo from Edit Party Member, or delete the party member from the party list. Removing Park Pilot deletes its locally stored app data.</li>
     <li>The Contacts and Photos pickers do not give Park Pilot ongoing access to either library. They provide only the contact or image you select, so there is no continuing Contacts or Photos permission to revoke.</li>
     <li>You can revoke Location or Calendar access at any time in the iOS Settings app under Privacy &amp; Security.</li>
