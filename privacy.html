@@ -18,6 +18,7 @@
   ul { padding-left: 22px; }
   li { margin: 6px 0; }
   a { color: #0a4d4d; overflow-wrap: anywhere; }
+  a[href^="mailto:"] { display: inline-block; min-height: 44px; padding: 8px 0; box-sizing: border-box; }
   @media (prefers-color-scheme: dark) { a { color: #6bd6cc; } }
   .brand { display: flex; align-items: center; gap: 10px; }
   .icon { width: 44px; height: 44px; border-radius: 10px; }
@@ -25,7 +26,7 @@
 </head>
 <body>
   <div class="brand"><img class="icon" src="assets/park-pilot-icon.png" alt="" aria-hidden="true"><h1>Park Pilot</h1></div>
-  <p class="updated">Privacy Policy &amp; Support | Last updated October 12, 2026</p>
+  <p class="updated">Privacy Policy &amp; Support | Last updated October 13, 2026</p>
 
   <h2>Privacy Policy</h2>
   <p>Park Pilot is provided by Arcem LLC and is built to keep your trip information on your device.</p>
@@ -48,8 +49,8 @@
   <ul>
     <li>Party-member details and selected photos remain on your device for as long as that member remains in the saved trip.</li>
     <li>Reservation details remain on your device as part of your saved trip.</li>
-    <li>The updated app reuses successful wait responses for five minutes and respects longer provider rate-limit instructions. A bounded on-device disk cache can retain last-known waits for up to 24 hours. Cached readings are labeled cached and are not presented as live.</li>
-    <li>Wait observations used for local estimates are kept separately by provider, with 30-day retention, bounded reads and a 20,000-row target cap. Legacy excess rows are trimmed in batches of at most 1,000 on real readings. Old source records are not renamed as the new feed. Estimates are not guaranteed wait times.</li>
+    <li>The updated app reuses successful wait responses for five minutes and respects longer provider rate-limit instructions. Last-known readings from the bounded on-device disk cache are usable for up to 24 hours, labeled cached and not presented as live. Files may remain until overwritten, cleared by iOS, or removed with the app; expiry is not guaranteed immediate file deletion.</li>
+    <li>When new recent waits are recorded, observations older than 30 days are pruned. History has bounded reads and a 20,000-row target cap. Legacy excess rows are trimmed in batches of at most 1,000 per recording. With no new readings, cleanup does not run automatically. Provider histories remain separate; old records are not renamed as the new feed. Estimates are not guaranteed wait times.</li>
     <li>Earlier build 1 uses a one-minute in-memory wait cache. Updating the app preserves saved trips and keeps old source data separate; the existing history retention policy still applies. Removing Park Pilot deletes its locally stored app data.</li>
     <li>You can change or remove a member's photo from Edit Party Member, or delete the party member from the party list. Removing Park Pilot deletes its locally stored app data.</li>
     <li>The Contacts and Photos pickers do not give Park Pilot ongoing access to either library. They provide only the contact or image you select, so there is no continuing Contacts or Photos permission to revoke.</li>
