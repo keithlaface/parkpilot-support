@@ -10,30 +10,34 @@
     font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; color: #1c1c1e;
   }
-  @media (prefers-color-scheme: dark) { body { background: #000; color: #f2f2f7; } a { color: #6cb4ff; } }
+  @media (prefers-color-scheme: dark) { body { background: #000; color: #f2f2f7; } a { color: #6bd6cc; } }
   h1 { font-size: 28px; margin-bottom: 4px; }
   h2 { font-size: 20px; margin-top: 36px; }
-  .updated { color: #8e8e93; font-size: 14px; margin-top: 0; }
+  .updated { color: #3d4f57; font-size: 14px; margin-top: 0; }
+  @media (prefers-color-scheme: dark) { .updated { color: #b8cccf; } }
   ul { padding-left: 22px; }
   li { margin: 6px 0; }
-  a { color: #007aff; }
+  a { color: #0a4d4d; overflow-wrap: anywhere; }
+  a[href^="mailto:"] { display: inline-block; min-height: 44px; padding: 8px 0; box-sizing: border-box; }
+  @media (prefers-color-scheme: dark) { a { color: #6bd6cc; } }
   .brand { display: flex; align-items: center; gap: 10px; }
-  .pin { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(180deg,#ea641e,#cd7731); }
+  .icon { width: 44px; height: 44px; border-radius: 10px; }
 </style>
 </head>
 <body>
-  <div class="brand"><div class="pin"></div><h1>Park Pilot</h1></div>
-  <p class="updated">Privacy Policy &amp; Support | Last updated September 6, 2026</p>
+  <div class="brand"><img class="icon" src="assets/park-pilot-icon.png" alt="" aria-hidden="true"><h1>Park Pilot</h1></div>
+  <p class="updated">Privacy Policy &amp; Support | Last updated October 13, 2026</p>
 
   <h2>Privacy Policy</h2>
   <p>Park Pilot is provided by Arcem LLC and is built to keep your trip information on your device.</p>
   <h3>What the app uses</h3>
   <ul>
-    <li><strong>Location</strong>: to show where you are in the park and calculate walking directions to your next stop. Park Pilot does not send your live location to its own servers or to Queue-Times.</li>
+    <li><strong>Location</strong>: to show where you are in the park and calculate walking directions to your next stop. Park Pilot does not send your live location to its own servers or to its wait-time provider. Apple Maps may receive the source and destination coordinates when you request walking directions.</li>
     <li><strong>Calendar</strong>: only if you choose to import plans for your selected park day. You can review, edit, and remove imported reservations in the app. This information stays on your device.</li>
     <li><strong>Contacts</strong>: only if you choose a person with Apple's system contact picker. Park Pilot receives only the contact you select and uses the selected name, birthday-derived age, and photo to create a party member on your device.</li>
     <li><strong>Photos</strong>: only if you choose an image with Apple's system photo picker. The selected party-member photo is resized and stored on your device.</li>
-    <li><strong>Wait times</strong>: the app sends the selected provider park identifier to Queue-Times.com. It does not send your live location or any party, reservation, contact, or photo content. Like any internet request, Queue-Times and its network providers can receive the request's IP address, time, and standard client metadata. Queue-Times' <a href="https://queue-times.com/en-US/pages/privacy">published privacy policy</a> describes IP and browser-request logging and names analytics, advertising, and security providers for its website, but it does not specify which practices apply to its app-facing API or how long API request metadata is retained.</li>
+    <li><strong>Wait times in the updated app</strong>: the app sends a public park identifier to <a href="https://www.themeparks.wiki/">ThemeParks.wiki</a> through its anonymous live API. It sends no live location, party, reservation, contact or photo content, uses no provider account or API key, and disables request cookies. The service receives an IP address and ordinary network-request metadata. Its <a href="https://www.themeparks.wiki/privacy">privacy notice</a> states that IP addresses are briefly retained for rate limiting and abuse prevention: the general counter lasts one minute and an abuse block can last up to 30 minutes. Park Pilot does not call the provider's history API. The hosting provider separately keeps short-lived server logs; the notice does not specify a numeric duration or complete fields for those logs. The provider says this information is not used for advertising, marketing profiles or data-broker sales.</li>
+    <li><strong>Earlier internal builds</strong>: the September version 1.0.0 build 1 uses Queue-Times.com instead. It sends a public park identifier, not party content or live location. That provider's <a href="https://queue-times.com/en-US/pages/privacy">website privacy policy</a> describes network metadata and website services but does not specify API-specific log retention. Installing the updated build changes the provider; the older build is not silently relabeled.</li>
     <li><strong>Weather</strong>: the app sends the selected park's public coordinates to Apple WeatherKit to request current conditions. It does not send your live location.</li>
     <li><strong>Maps</strong>: Apple Maps provides map content for the park and viewed map area. Apple receives the network information needed to provide its services, including an IP address, under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</li>
   </ul>
@@ -45,7 +49,9 @@
   <ul>
     <li>Party-member details and selected photos remain on your device for as long as that member remains in the saved trip.</li>
     <li>Reservation details remain on your device as part of your saved trip.</li>
-    <li>The app reuses wait responses from an in-memory cache for up to one minute to avoid duplicate requests. Network requests may also be handled by iOS networking and caching facilities.</li>
+    <li>The updated app reuses successful wait responses for five minutes and respects longer provider rate-limit instructions. Last-known readings from the bounded on-device disk cache are usable for up to 24 hours, labeled cached and not presented as live. Files may remain until overwritten, cleared by iOS, or removed with the app; expiry is not guaranteed immediate file deletion.</li>
+    <li>When new recent waits are recorded, observations older than 30 days are pruned. History has bounded reads and a 20,000-row target cap. Legacy excess rows are trimmed in batches of at most 1,000 per recording. With no new readings, cleanup does not run automatically. Provider histories remain separate; old records are not renamed as the new feed. Estimates are not guaranteed wait times.</li>
+    <li>Earlier build 1 uses a one-minute in-memory wait cache. Updating the app preserves saved trips and keeps old source data separate; the existing history retention policy still applies. Removing Park Pilot deletes its locally stored app data.</li>
     <li>You can change or remove a member's photo from Edit Party Member, or delete the party member from the party list. Removing Park Pilot deletes its locally stored app data.</li>
     <li>The Contacts and Photos pickers do not give Park Pilot ongoing access to either library. They provide only the contact or image you select, so there is no continuing Contacts or Photos permission to revoke.</li>
     <li>You can revoke Location or Calendar access at any time in the iOS Settings app under Privacy &amp; Security.</li>
