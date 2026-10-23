@@ -8,7 +8,7 @@ const index = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const css = readFileSync(new URL("../support.css", import.meta.url), "utf8");
 const js = readFileSync(new URL("../support.js", import.meta.url), "utf8");
 
-const PRIVACY_SHA256 = "ac7d68cd85dd4d4b7d8af21ea2801d5a859c10608393c1f7cef56d46a05b4e54";
+const PRIVACY_SHA256 = "957f657ecb38716fde4fd41de5af406fbcea0385b0f2c69903fdb7a995f92a45";
 const CONTACT = "developer@arcemdigitalsolutions.com";
 
 function luminance(hex) {
@@ -37,6 +37,18 @@ test("the support page is not a redirect", () => {
   assert.match(index, /id="contact"/);
 });
 
+test("support copy matches the provider and cache rules in privacy.html", () => {
+  const privacyText = privacy.toString("utf8");
+  assert.match(privacyText, /ThemeParks\.wiki/);
+  assert.match(index, /ThemeParks\.wiki/);
+  assert.match(privacyText, /five minutes/);
+  assert.match(index, /five minutes/);
+  assert.match(privacyText, /24 hours/);
+  assert.match(index, /24 hours/);
+  assert.doesNotMatch(index, /does not keep a longer offline copy/);
+  assert.doesNotMatch(index, /Powered by Queue-Times/);
+});
+
 test("contact address matches privacy.html and is not invented", () => {
   const privacyText = privacy.toString("utf8");
   assert.match(privacyText, new RegExp(CONTACT));
@@ -50,14 +62,15 @@ test("contact address matches privacy.html and is not invented", () => {
   assert.doesNotMatch(`${index}\n${js}\n${css}`, /lorem ipsum|todo|placeholder copy/i);
 });
 
-test("required support topics and Queue-Times credit are present", () => {
+test("required support topics, provider credit and disclaimer are present", () => {
   assert.match(index, /Where do the wait times come from/);
   assert.match(index, /What happens with no signal/);
   assert.match(index, /Which parks are supported/);
   assert.match(index, /Where does the weather come from/);
   assert.match(index, /href="privacy\.html"/);
-  assert.match(index, /Powered by Queue-Times\.com/);
-  assert.match(index, /https:\/\/queue-times\.com\/en-US/);
+  assert.match(index, /https:\/\/www\.themeparks\.wiki\//);
+  assert.match(index, /unofficial app/);
+  assert.match(index, /not affiliated with, endorsed by, or sponsored by/);
   assert.match(index, /how it works/i);
 });
 

@@ -11,7 +11,7 @@ From the repository root:
 node --test scripts/verify.mjs
 ```
 
-The script checks that `privacy.html` is unchanged, that the support home is not a redirect, that every contact address is the one already published on `privacy.html`, that the required topics and Queue-Times credit are present, and that the color pairs used for text and controls meet WCAG 2.1 AA.
+The script checks that `privacy.html` matches its pinned hash (update the pin deliberately when the policy changes), that the support home is not a redirect, that every contact address is the one already published on `privacy.html`, that the copy matches the wait provider and cache rules in `privacy.html`, that the required topics, ThemeParks.wiki credit and unofficial disclaimer are present, and that the color pairs used for text and controls meet WCAG 2.1 AA.
 
 ## Steps that cannot run
 
