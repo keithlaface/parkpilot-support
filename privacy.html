@@ -26,10 +26,10 @@
 </head>
 <body>
   <div class="brand"><img class="icon" src="assets/park-pilot-icon.png" alt="" aria-hidden="true"><h1>Park Pilot</h1></div>
-  <p class="updated">Privacy Policy &amp; Support | Last updated October 13, 2026</p>
+  <p class="updated">Privacy Policy &amp; Support | Last updated October 30, 2026</p>
 
   <h2>Privacy Policy</h2>
-  <p>Park Pilot is provided by Arcem LLC and is built to keep your trip information on your device.</p>
+  <p>Park Pilot is provided by Arcem Digital Solutions, a brand of Arcem LLC, and is built to keep your trip information on your device.</p>
   <h3>What the app uses</h3>
   <ul>
     <li><strong>Location</strong>: to show where you are in the park and calculate walking directions to your next stop. Park Pilot does not send your live location to its own servers or to its wait-time provider. Apple Maps may receive the source and destination coordinates when you request walking directions.</li>
@@ -41,8 +41,16 @@
     <li><strong>Weather</strong>: the app sends the selected park's public coordinates to Apple WeatherKit to request current conditions. It does not send your live location.</li>
     <li><strong>Maps</strong>: Apple Maps provides map content for the park and viewed map area. Apple receives the network information needed to provide its services, including an IP address, under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</li>
   </ul>
+  <h3>Optional Party radar in Rain and Ride</h3>
+  <p>Radar is off by default. Turning it on shares your chosen group name, location, heading, accuracy and original update time only with nearby party phones holding your code. Party phones can relay older spots. Local Network access enables the link; Camera access is used only to scan a party QR code. Radar has no server and saves no location history to disk.</p>
+  <p>Radar uses Apple's Multipeer Connectivity, and only phones that have your party code can join. Updates travel encrypted, directly from phone to phone over Wi-Fi or Bluetooth. They never pass through Arcem Digital Solutions or any other company's servers. Discovery shows nearby phones only a scrambled party token and a random name, not your name or location. The camera is used only while you scan a party QR code. Park Pilot does not take or keep photos or video from that scan.</p>
+  <p>Leaving the app keeps the party code, keys, peer list and last-known spots in memory. A short, system-limited grace period finishes nearby transfers, but iOS may disconnect immediately and suspends peer updates. No background location is recorded. Returning before the original four-hour deadline automatically reconnects using the same code, without pairing again. Disconnected readings show when the peer was last seen. If iOS closes the app or you force quit, start and pair again.</p>
+  <p>Radar stays on across tabs, sheets and reunion. Tap Stop to disconnect and forget this phone's radar data and code. Ending the trip or the original four-hour deadline also ends radar, including time spent away. Expiry is enforced before reconnecting or sharing on return if the app was suspended. A disconnected phone cannot receive an immediate remote Stop; each phone has its own Stop and expiry.</p>
+  <h3>Optional Rain heads-up (barometer)</h3>
+  <p>Rain heads-up is off until you turn it on. When it's on during an active trip, Park Pilot reads your iPhone's barometer for about five seconds once a minute, only while the app is open. That's why iOS asks for Motion &amp; Fitness access. The app reads air pressure only. It does not use step counts, activity type, the accelerometer or Health data, and it never reads the barometer in the background.</p>
+  <p>Pressure readings stay on your phone. The app keeps up to 46 recent readings (about 48 minutes) with your current trip so a warning can survive a quick app switch. They are deleted when the trip ends or when you turn Rain heads-up off. Readings are never sent to us, to the wait-time provider, to radar partners or to anyone else, and they are not included in trip exports or widgets.</p>
   <h3>What we collect</h3>
-  <p>Park Pilot has no backend user accounts, custom analytics, advertising, third-party tracking code, app-generated device identifier, or partner reporting feed. Arcem LLC does not operate a server that receives your trip or usage data and does not sell your personal information. Information you enter or select is stored locally as part of your saved trip. Service requests and the network information visible to providers are described above.</p>
+  <p>Park Pilot has no backend user accounts, custom analytics, advertising, third-party tracking code, app-generated device identifier, or partner reporting feed. Arcem Digital Solutions, a brand of Arcem LLC, does not operate a server that receives your trip or usage data and does not sell your personal information. Information you enter or select is stored locally as part of your saved trip. Service requests and the network information visible to providers are described above. Party radar and Rain heads-up send nothing to us: radar goes only from phone to phone, and barometer readings never leave your phone.</p>
   <p>If you choose to email support, we receive the email and any information or attachments you include so we can respond. Please avoid sending sensitive information or details about children.</p>
   <p>Apple may provide the developer with aggregate App Store usage metrics and crash or diagnostic reports from people who chose to share analytics with app developers in iOS. Apple controls that system-level choice and its privacy protections. Park Pilot does not add reservation text, screenshots, party details, contact selections, photos, precise location, or route history to analytics or diagnostics, and we do not share Apple's reports with partners. You can manage Apple's choice in iOS Settings under Privacy &amp; Security, Analytics &amp; Improvements.</p>
   <h3>Storage, deletion, and access</h3>
@@ -54,15 +62,16 @@
     <li>Earlier build 1 uses a one-minute in-memory wait cache. Updating the app preserves saved trips and keeps old source data separate; the existing history retention policy still applies. Removing Park Pilot deletes its locally stored app data.</li>
     <li>You can change or remove a member's photo from Edit Party Member, or delete the party member from the party list. Removing Park Pilot deletes its locally stored app data.</li>
     <li>The Contacts and Photos pickers do not give Park Pilot ongoing access to either library. They provide only the contact or image you select, so there is no continuing Contacts or Photos permission to revoke.</li>
-    <li>You can revoke Location or Calendar access at any time in the iOS Settings app under Privacy &amp; Security.</li>
+    <li>Party radar keeps its code, keys and spots only in memory. Tap Stop, end the trip, or let the four-hour limit pass to clear them.</li>
+    <li>You can revoke Location, Calendar, Motion &amp; Fitness, Local Network or Camera access at any time in the iOS Settings app under Privacy &amp; Security.</li>
   </ul>
   <h3>Children</h3>
-  <p>Park Pilot helps a group leader organize a park visit. Party details, including any children's names, ages, and selected photos entered by the group leader, are stored locally and are not transmitted to Arcem LLC by the app. Please do not include children's personal information in support emails.</p>
+  <p>Park Pilot helps a group leader organize a park visit. Party details, including any children's names, ages, and selected photos entered by the group leader, are stored locally and are not transmitted to Arcem Digital Solutions, a brand of Arcem LLC, by the app. Please do not include children's personal information in support emails.</p>
 
   <h2>Support</h2>
   <p>Questions, bug reports, or feedback? Email <a href="mailto:developer@arcemdigitalsolutions.com">developer@arcemdigitalsolutions.com</a> and we'll get back to you.</p>
 
   <h2>Contact</h2>
-  <p>Park Pilot | Arcem LLC | Needham, MA | <a href="mailto:developer@arcemdigitalsolutions.com">developer@arcemdigitalsolutions.com</a></p>
+  <p>Park Pilot | Arcem Digital Solutions, a brand of Arcem LLC | Needham, MA | <a href="mailto:developer@arcemdigitalsolutions.com">developer@arcemdigitalsolutions.com</a></p>
 </body>
 </html>
