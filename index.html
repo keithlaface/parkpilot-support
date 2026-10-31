@@ -3,10 +3,182 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="0; url=privacy.html">
 <title>Park Pilot Support</title>
+<meta name="description" content="Support for Park Pilot from Arcem LLC: how the app works, where wait times and weather come from, and how to email the developer.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="support.css">
+<script>
+try {
+  var savedTheme = localStorage.getItem("parkpilot-theme");
+  if (savedTheme === "light" || savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }
+} catch (e) {}
+</script>
 </head>
 <body>
-  <p><a href="privacy.html">Park Pilot Privacy &amp; Support</a></p>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">
+    <span class="pin" aria-hidden="true"></span>
+    <span class="brand-text">
+      <span class="brand-name">Park Pilot</span>
+      <span class="brand-meta">Support</span>
+    </span>
+  </a>
+  <div class="header-actions">
+    <a class="button button-primary" href="mailto:developer@arcemdigitalsolutions.com?subject=Park%20Pilot%20support">Email support</a>
+  </div>
+</header>
+
+<main id="content">
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>Park Pilot support</h1>
+      <p class="lede">Park Pilot shows where you are in the park, walking directions to your next stop, and wait times and weather for the park you selected.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="mailto:developer@arcemdigitalsolutions.com?subject=Park%20Pilot%20support">Email support</a>
+        <a class="button button-secondary" href="privacy.html">Privacy policy</a>
+      </div>
+      <div class="hero-tools">
+        <nav class="toc" aria-label="On this page">
+          <a href="#how-it-works">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button type="button" class="text-button" id="theme-toggle" aria-pressed="false">Use dark mode</button>
+      </div>
+    </div>
+    <aside class="glance" aria-labelledby="glance-title">
+      <h2 id="glance-title">With you on the day</h2>
+      <dl>
+        <div>
+          <dt>Place</dt>
+          <dd>Where you are, on this phone, and walking directions to the next stop.</dd>
+        </div>
+        <div>
+          <dt>The day</dt>
+          <dd>Imported plans and party details, stored with the saved trip.</dd>
+        </div>
+        <div>
+          <dt>The park</dt>
+          <dd>Wait times and weather for the park you selected.</dd>
+        </div>
+      </dl>
+    </aside>
+  </section>
+
+  <section class="panel" id="how-it-works" aria-labelledby="how-title">
+    <div class="section-head">
+      <h2 id="how-title">How it works</h2>
+      <p>No account. The trip stays on the phone.</p>
+    </div>
+    <ol class="steps">
+      <li>
+        <h3>Set the day</h3>
+        <p>Choose the park and the day you are going. You can import that day's plans from Calendar, and you can add people with Apple's contact and photo pickers. What you import or select stays on your device. Park Pilot has no sign-in and no backend account.</p>
+      </li>
+      <li>
+        <h3>Walk the park</h3>
+        <p>The app uses your location on the phone to show where you are and to calculate walking directions to your next stop. It does not send that live location to Arcem LLC or to the wait-time provider. When you ask for walking directions, Apple Maps may receive the start and end coordinates.</p>
+      </li>
+      <li>
+        <h3>Check the line and the sky</h3>
+        <p>Wait times are requested from ThemeParks.wiki with the selected park's public identifier. Weather is requested from Apple WeatherKit with that park's public coordinates. Map content comes from Apple Maps.</p>
+      </li>
+    </ol>
+    <p class="credit">Wait times from <a href="https://www.themeparks.wiki/">ThemeParks.wiki</a></p>
+  </section>
+
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="section-head">
+      <h2 id="faq-title">FAQ</h2>
+      <p>Short answers. The privacy policy has the full detail on data.</p>
+    </div>
+    <form class="finder" role="search" action="#faq" method="get">
+      <label for="faq-search">Search help topics</label>
+      <input id="faq-search" type="search" name="q" enterkeyhint="search" autocomplete="off" spellcheck="false" placeholder="Try signal, weather, or parks">
+    </form>
+    <p id="faq-empty" class="empty" hidden></p>
+    <div class="faq-list">
+      <details class="faq-item" id="wait-times" open>
+        <summary>Where do the wait times come from?</summary>
+        <div class="faq-body">
+          <p>The current version of Park Pilot asks <a href="https://www.themeparks.wiki/">ThemeParks.wiki</a> for waits using the public identifier of the park you selected. The request does not include your live location, party, reservations, contacts, or photos, and it uses no account or API key. Like any internet request, the provider can see the request's IP address and ordinary network metadata. Its <a href="https://www.themeparks.wiki/privacy">privacy notice</a> describes how it handles requests.</p>
+          <p>Park Pilot shows the number the provider returns. It does not operate the parks and it does not measure the queue itself, so a posted wait can lag the entrance. Wait times are estimates, not guarantees.</p>
+          <p>The early September test build (version 1.0.0, build 1) used <a href="https://queue-times.com/en-US">Queue-Times.com</a> instead. Updating the app switches the provider.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="no-signal">
+        <summary>What happens with no signal?</summary>
+        <div class="faq-body">
+          <p>The saved trip stays on the device: the park day, plans you imported, and party details you added. Removing the app deletes that locally stored data.</p>
+          <p>Live wait times, weather, and map imagery need a connection to refresh. Park Pilot reuses a successful wait response for up to five minutes. Without a connection, it can show the last readings it saved on the device for up to 24 hours, labeled as cached rather than live. After that, waits do not show until a new response can be requested.</p>
+          <p>A missing signal does not upload your location. Park Pilot does not run a server that receives your trip, and it does not send your live location to the wait-time provider.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="parks">
+        <summary>Which parks are supported?</summary>
+        <div class="faq-body">
+          <p>The parks you can select in Park Pilot are the supported parks. For the one you pick, the app sends that park's public identifier for waits and that park's public coordinates for weather.</p>
+          <p>If a park is not in the app's list, Park Pilot is not offering waits or park weather for it. Open the park list in the app for the current set. The wait-time provider publishes data for many more parks than any one app has to include, and Park Pilot does not claim every park on that list.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="weather">
+        <summary>Where does the weather come from?</summary>
+        <div class="faq-body">
+          <p>Current conditions come from Apple WeatherKit. The app sends the selected park's public coordinates, not your live location. Apple receives the network information needed to answer that request, including an IP address, under <a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</p>
+          <p>If WeatherKit cannot be reached, weather does not refresh. The saved trip is still on the device.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="account">
+        <summary>Is there an account or a password?</summary>
+        <div class="faq-body">
+          <p>No. Park Pilot has no backend user accounts, so there is nothing to sign in to and no password to reset. Information you enter or select is stored on your device as part of the saved trip.</p>
+        </div>
+      </details>
+      <details class="faq-item" id="email-help">
+        <summary>How do I contact support?</summary>
+        <div class="faq-body">
+          <p>Email <a href="mailto:developer@arcemdigitalsolutions.com?subject=Park%20Pilot%20support">developer@arcemdigitalsolutions.com</a>. Include the park, the date, and what you expected to happen. Please do not send sensitive information or details about children. The same address is on the <a href="privacy.html">privacy policy</a>.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="panel contact-panel" id="contact" aria-labelledby="contact-title">
+    <div class="contact-card">
+      <h2 id="contact-title">Contact</h2>
+      <p class="contact-lead">Questions, bug reports, or feedback.</p>
+      <p class="email"><a href="mailto:developer@arcemdigitalsolutions.com?subject=Park%20Pilot%20support">developer@<wbr>arcemdigitalsolutions.com</a></p>
+      <p>Park Pilot is provided by Arcem LLC, Needham, MA.</p>
+      <div class="contact-actions">
+        <a class="button button-primary" href="mailto:developer@arcemdigitalsolutions.com?subject=Park%20Pilot%20support">Email support</a>
+        <button type="button" class="button button-secondary" id="copy-email" data-email="developer@arcemdigitalsolutions.com">Copy address</button>
+      </div>
+      <p id="copy-status" class="status" role="status" aria-live="polite"></p>
+      <ul class="contact-notes">
+        <li>Include the park, the date, and what you expected to see.</li>
+        <li>Please do not send sensitive information or details about children.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Park Pilot · Arcem LLC · Needham, MA</p>
+  <p class="disclaimer" id="unofficial">Park Pilot is an independent, unofficial app. It is not affiliated with, endorsed by, or sponsored by any theme park, park operator, or wait-time provider. Park and attraction names belong to their owners.</p>
+  <nav aria-label="Footer">
+    <a href="privacy.html">Privacy policy</a>
+    <a href="https://www.themeparks.wiki/">Wait times from ThemeParks.wiki</a>
+    <a href="mailto:developer@arcemdigitalsolutions.com?subject=Park%20Pilot%20support">developer@arcemdigitalsolutions.com</a>
+  </nav>
+</footer>
+
+<noscript>
+  <p class="noscript">Search on this page needs JavaScript. Every answer above is already visible, and email works without it.</p>
+</noscript>
+<script src="support.js"></script>
 </body>
 </html>
